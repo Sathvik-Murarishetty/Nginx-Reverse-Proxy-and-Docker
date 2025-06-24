@@ -1,0 +1,11 @@
+# Python
+*.pyc
+__pycache__/
+.venv/
+
+# Go
+bin/
+*.exe
+
+# Docker
+*.log
