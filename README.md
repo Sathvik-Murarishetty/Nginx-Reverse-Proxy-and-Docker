@@ -1,4 +1,3 @@
-```md
 # 🔁 Nginx Reverse Proxy + Docker Compose System
 
 This project sets up two backend services (Golang and Python) and routes them behind a single **Nginx reverse proxy**, all running via Docker Compose.
@@ -98,5 +97,4 @@ docker-compose logs nginx
 ✅ Health checks  
 ✅ Centralized access via reverse proxy  
 ✅ Clean logs  
-✅ Fully Dockerized with bridge networking  
-```
+✅ Fully Dockerized with bridge networking
