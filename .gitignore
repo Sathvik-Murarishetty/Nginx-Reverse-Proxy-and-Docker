@@ -11,6 +11,6 @@ bin/
 # Docker
 *.log
 
-# macOS metadata
+# macOS
 __MACOSX/
 .DS_Store

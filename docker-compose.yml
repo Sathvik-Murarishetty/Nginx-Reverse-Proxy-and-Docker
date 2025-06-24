@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   nginx:
     build:
@@ -5,8 +7,10 @@ services:
     ports:
       - "8080:80"
     depends_on:
-      - service1
-      - service2
+      service1:
+        condition: service_healthy
+      service2:
+        condition: service_healthy
     networks:
       - backend
 
@@ -18,11 +22,12 @@ services:
     networks:
       - backend
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8001/ping"]
+      test: ["CMD-SHELL", "curl -f http://localhost:8001/ping || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 3
-
+      start_period: 20s
+    
   service2:
     build:
       context: ./service_2
@@ -31,10 +36,11 @@ services:
     networks:
       - backend
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8002/ping"]
+      test: ["CMD-SHELL", "curl -f http://localhost:8002/ping || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 3
+      start_period: 20s
 
 networks:
   backend:
